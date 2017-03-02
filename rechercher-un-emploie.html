@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html>
+    <head>
+		        <title> EST enligne</title> 
+		        
+		        
+		        <meta charset="UTF-8">
+		        <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+		        <link rel="stylesheet" type="text/css" href="0.css" />
+		       <link rel="stylesheet" type="text/css" href="11.css" />
+		       <link rel="stylesheet" type="text/css" href="111.css" />
+		       
+		<!-- jQuery START -->
+		<script type="text/javascript" src="sites/all/themes/vtrois/js/jquery.min.js"></script>
+		<script src="sites/all/themes/vtrois/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="sites/all/themes/vtrois/js/jquery-ui.min.js"></script>
+		<!-- jQuery END -->
+		<script src="sites/all/themes/vtrois/js/34dd9bb63c05d7648b4b8d14c3b3758f.js" data-minify="1"></script>
+		<script src="sites/all/themes/vtrois/js/ad7a2778b51a6e287d0f363f6068ab94.js" data-minify="1"></script>
+		   
+		   
+<link rel="stylesheet" type="text/css" href="vtrois.css" />
+
+
+<script type="text/javascript" src="sites/all/themes/vtrois/js/script.js"></script>
+
+	<script src= "sites/all/themes/vtrois/js/angular.min.js"></script>
+		
+		 
+    </head>
+    
+    <body ng-app="MyApp" ng-controller="MyCtrl" style="background-color:white ; background-image:url('sites/all/themes/vtrois/images/bg1.jpg'); background-repeat:no-repeat;background-position:top,center; background-attachment:scroll;">
+		 <input type="hidden" id="ID" name="ID" value="0" />
+                
+		<!-- 
+		<header>
+		    <div class="header-box sl"> 
+		    
+                 <div class="logo-box"><a href="#" rel="home" title="ESTenligne.net"></a></div>
+    		</div>
+    		
+		</header>
+		     -->
+		     <header class="zone0">
+    
+    <div class="header-box sl"> 
+        
+        <div class="logo-box"><a href="/" rel="home" title="iutenligne.net"></a></div>
+        
+        <div class="action-box">
+            
+            <div class="action-tabs-box" id="disconnectedDiv" style="display: inherit;">
+                
+                <ul class="action-tabs">
+                                        <li class="action-tabs-item cartable-off">&nbsp;</li>
+                                        <li class="action-tabs-item profile"><a href="#action-tab-profile" >&nbsp;</a></li>
+                </ul>
+                
+                <div id="action-tab-profile">
+                    
+                                        
+                    <div class="clearfix"></div>
+                    
+                                        <div class="action-tab-buton-row buton-row-del-conexion">
+                        <a href="DS.html" >Se connecter</a>
+                    </div>
+                                        
+                                        
+                                    </div>
+                
+                                
+            </div >
+              
+            <div  class="action-tabs-box" id="connectedDiv" style="display: none;">
+                
+                <ul class="action-tabs">
+                                        <li class="action-tabs-item cartable"><a href="#action-tab-cartable" >&nbsp;</a></li>
+                                        <li class="action-tabs-item profile"><a href="#action-tab-profile" >&nbsp;</a></li>
+                </ul>
+                
+                <div id="action-tab-profile">
+                    
+                                                         <div class="action-tab-row action-tab-user-name" id="NomUser1"></div>
+                    <div class="action-tab-row action-tab-user-etablissement">
+                                            </div>
+                                        
+                    <div class="clearfix"></div>
+                    
+                                        <div class="action-tab-buton-row buton-row-del-conexion" >
+                        <a  onclick="logout()">Se d&eacute;connecter</a>
+                    </div>
+                                        
+                                        <div class="action-tab-buton-row buton-row-set-profile">
+                        <a href="/profile/editer">Modifier mon profil</a>
+                    </div>
+                                        
+                                        <div class="action-tab-buton-row buton-row-see-carnet">
+                        <a id="btn-header-carnet">Mon carnet d'adresses</a>
+                    </div>
+                                    </div>
+                
+                                <div id="action-tab-cartable">
+                    
+                                                          <div class="action-tab-row action-tab-user-name" id="NomUser2"></div>
+                    <div class="action-tab-row action-tab-user-etablissement">
+                                            </div>
+                    
+                    <div class="clearfix"></div>
+                    
+                                        <div class="action-tab-buton-row buton-row-see-cartable">
+                        <a>Consulter mes cartables</a>
+                    </div>
+                    
+                                        
+                                        <div class="action-tab-buton-row buton-row-add-cartable">
+                        <a>Ajouter un cartable</a>
+                    </div>
+                                        
+                </div>
+                                
+            </div>
+            
+            <div class="action-zone-box" >
+                <div id="bubble-container" class="open" style="display: none;">
+                    <div id="data-bubble">
+                        
+                        <div class="bubble-box">
+                            <div class="bubble-content">
+                            	<div class="cartable-ajax-list-html">
+    <ul>
+        
+        
+        
+            <li class="cartable-iel-box ddbutton ddgroup-bcartable open" id="ddbutton_4360">
+                <div id="cartablesPuce" class="puce ddbutton-puce "></div>
+                <div id="cartables" class="cartable-header cartable-iel ddbutton-action">
+                    <div class="cartable-header-title">Les Cartables IEL</div>
+                    <div class="cartable-header-desc">(6 cartables)</div>
+                </div>
+                
+                <ul id="ressources" class="ddbutton-target" style="display: none;">
+                    <li>
+                        <div>
+                            
+                                      <div class="cartable-row ddbutton ddgroup-bcartableiel" id="ddbutton_1310">
+                                        <div id="stage" class="cartable-row-header ddbutton-action">
+                                            <div class="cartable-row-name">Stage</div>
+                                            <div id="stagePuce" class="puce ddbutton-puce"></div>
+                                            <div class="cartable-row-resume">9 ressources</div>
+                                        </div>
+                                        <div id="stageR" class="cartable-row-resource-box ddbutton-target" style="display: none;">
+
+                                                                                            <div class="cartable-row-resource-row clickable" onclick="javascript:document.location.href = 'rechercher-un-emploie.html';">
+                                                    Rechercher un emploi                                                </div>
+                                                                                            <div class="cartable-row-resource-row clickable" onclick="javascript:document.location.href = '/ressources/rapport-ou-memoire-de-stage.html';">
+                                                    Rapport ou mémoire de stage                                                </div>
+                                                                                            <div class="cartable-row-resource-row clickable" onclick="javascript:document.location.href = '/ressources/structurer-son-discours.html';">
+                                                    Structurer son discours                                                </div>
+                                                                                            <div class="cartable-row-resource-row clickable" onclick="javascript:document.location.href = '/ressources/la-presentation-powerpoint.html';">
+                                                    La présentation PowerPoint                                                </div>
+                                                                                            <div class="cartable-row-resource-row clickable" onclick="javascript:document.location.href = '/ressources/le-cv-et-la-lettre-de-motivation-exemples-commentes-et-corriges.html';">
+                                                    Le CV et la lettre de motivation : exemples commentés et corrigés                                                </div>
+                                                                                            <div class="cartable-row-resource-row clickable" onclick="javascript:document.location.href = '/ressources/la-prise-de-parole-en-public-exposes-soutenances.html';">
+                                                    La prise de parole en public (exposés, soutenances)                                                </div>
+                                                                                            <div class="cartable-row-resource-row clickable" onclick="javascript:document.location.href = '/ressources/le-stage-en-entreprise.html';">
+                                                    Le stage en entreprise                                                </div>
+                                                                                            <div class="cartable-row-resource-row clickable" onclick="javascript:document.location.href = '/ressources/cv-and-cover-letter-suggestions-and-corrected-examples-us-uk.html';">
+                                                    The CV and cover letter : suggestions and corrected examples (US &amp; UK)                                                </div>
+                                                                                            <div class="cartable-row-resource-row clickable" onclick="javascript:document.location.href = '/ressources/ensemble-de-quiz-anglais-le-monde-du-travail-cv-entretien-et-lettre-de-motivation.html';">
+                                                    Ensemble de quiz : Anglais - Le monde du travail - CV, entretien et lettre de motivation                                                </div>
+                                            
+                                        </div>
+                                    </div>
+                                                            
+                                                                    <div class="cartable-row ddbutton ddgroup-bcartableiel" id="ddbutton_4180">
+                                        <div class="cartable-row-header ddbutton-action">
+                                            <div class="cartable-row-name">Espagnol</div>
+                                            <div class="puce ddbutton-puce"></div>
+                                            <div class="cartable-row-resume">3 ressources</div>
+                                        </div>
+                                        <div class="cartable-row-resource-box ddbutton-target" style="">
+
+                                                                                            <div class="cartable-row-resource-row clickable" onclick="javascript:document.location.href = '/ressources/grammaire-espagnole.html';">
+                                                    Grammaire espagnole                                                </div>
+                                                                                            <div class="cartable-row-resource-row clickable" onclick="javascript:document.location.href = '/ressources/grammaire-espagnole-module-2.html';">
+                                                    Grammaire espagnole - Module 2                                                </div>
+                                                                                            <div class="cartable-row-resource-row clickable" onclick="javascript:document.location.href = '/ressources/test-formatif-espagnol-ndegmef-101.html';">
+                                                    Test formatif espagnol - N°MEF 101                                                </div>
+                                            
+                                        </div>
+                                    </div>
+                                                            
+                                                                    <div class="cartable-row ddbutton ddgroup-bcartableiel" id="ddbutton_5131">
+                                        <div class="cartable-row-header ddbutton-action">
+                                            <div class="cartable-row-name">Soutenance</div>
+                                            <div class="puce ddbutton-puce"></div>
+                                            <div class="cartable-row-resume">3 ressources</div>
+                                        </div>
+                                        <div class="cartable-row-resource-box ddbutton-target" style="">
+
+                                                                                            <div class="cartable-row-resource-row clickable" onclick="javascript:document.location.href = '/ressources/structurer-son-discours.html';">
+                                                    Structurer son discours                                                </div>
+                                                                                            <div class="cartable-row-resource-row clickable" onclick="javascript:document.location.href = '/ressources/la-presentation-powerpoint.html';">
+                                                    La présentation PowerPoint                                                </div>
+                                                                                            <div class="cartable-row-resource-row clickable" onclick="javascript:document.location.href = '/ressources/la-prise-de-parole-en-public-exposes-soutenances.html';">
+                                                    La prise de parole en public (exposés, soutenances)                                                </div>
+                                            
+                                        </div>
+                                    </div>
+                                                            
+                                                                    <div class="cartable-row ddbutton ddgroup-bcartableiel" id="ddbutton_4143">
+                                        <div class="cartable-row-header ddbutton-action">
+                                            <div class="cartable-row-name">Traitement de texte</div>
+                                            <div class="puce ddbutton-puce"></div>
+                                            <div class="cartable-row-resume">4 ressources</div>
+                                        </div>
+                                        <div class="cartable-row-resource-box ddbutton-target" style="">
+
+                                                                                            <div class="cartable-row-resource-row clickable" onclick="javascript:document.location.href = '/ressources/word-2007-en-2-minutes.html';">
+                                                    Word 2007 en 2 minutes                                                </div>
+                                                                                            <div class="cartable-row-resource-row clickable" onclick="javascript:document.location.href = '/ressources/presentation-de-l-utilisation-d-openoffice-writer.html';">
+                                                    Présentation de l'utilisation d'OpenOffice Writer                                                </div>
+                                                                                            <div class="cartable-row-resource-row clickable" onclick="javascript:document.location.href = '/ressources/traitement-de-texte-niveau-intermediaire-word-2000.html';">
+                                                    Traitement de texte niveau intermédiaire - Word 2000                                                </div>
+                                                                                            <div class="cartable-row-resource-row clickable" onclick="javascript:document.location.href = '/ressources/word-2010-en-2-minutes.html';">
+                                                    Word 2010 en 2 minutes                                                </div>
+                                            
+                                        </div>
+                                    </div>
+                                                            
+                                                                    <div class="cartable-row ddbutton ddgroup-bcartableiel" id="ddbutton_2746">
+                                        <div class="cartable-row-header ddbutton-action">
+                                            <div class="cartable-row-name">Tableur</div>
+                                            <div class="puce ddbutton-puce"></div>
+                                            <div class="cartable-row-resume">5 ressources</div>
+                                        </div>
+                                        <div class="cartable-row-resource-box ddbutton-target" style="">
+
+                                                                                            <div class="cartable-row-resource-row clickable" onclick="javascript:document.location.href = '/ressources/excel-2007-en-2-minutes.html';">
+                                                    Excel 2007 en 2 minutes                                                </div>
+                                                                                            <div class="cartable-row-resource-row clickable" onclick="javascript:document.location.href = '/ressources/introduction-excel.html';">
+                                                    Introduction à Excel                                                </div>
+                                                                                            <div class="cartable-row-resource-row clickable" onclick="javascript:document.location.href = '/ressources/formation-bureautique-excel-niveau-1.html';">
+                                                    Formation bureautique Excel niveau 1                                                </div>
+                                                                                            <div class="cartable-row-resource-row clickable" onclick="javascript:document.location.href = '/ressources/excel-par-l-exemple-niveau-2.html';">
+                                                    Excel par l'exemple (Niveau 2)                                                </div>
+                                                                                            <div class="cartable-row-resource-row clickable" onclick="javascript:document.location.href = '/ressources/excel-2010-en-2-minutes.html';">
+                                                    Excel 2010 en 2 minutes                                                </div>
+                                            
+                                        </div>
+                                    </div>
+                                                            
+                                                                    <div class="cartable-row ddbutton ddgroup-bcartableiel" id="ddbutton_7158">
+                                        <div class="cartable-row-header ddbutton-action">
+                                            <div class="cartable-row-name">PowerPoint</div>
+                                            <div class="puce ddbutton-puce"></div>
+                                            <div class="cartable-row-resume">2 ressources</div>
+                                        </div>
+                                        <div class="cartable-row-resource-box ddbutton-target" style="">
+
+                                                                                            <div class="cartable-row-resource-row clickable" onclick="javascript:document.location.href = '/ressources/la-presentation-powerpoint.html';">
+                                                    La présentation PowerPoint                                                </div>
+                                                                                            <div class="cartable-row-resource-row clickable" onclick="javascript:document.location.href = '/ressources/la-preao-pour-enseigner-en-presentiel-mettre-un-cours-en-ligne.html';">
+                                                    La PréAO pour enseigner en Présentiel, mettre un cours en ligne                                                </div>
+                                            
+                                        </div>
+                                    </div>
+                                                                                    </div>
+                    </li>
+                </ul>
+            </li>
+        
+            </ul>
+</div>
+                            </div>
+                        </div>
+                        
+                        <div class="triangle">
+                            <div class="trileft"></div>
+                            <div class="triright"></div>
+                        </div>
+                        
+                        <div id="bubble-close-button"></div>
+                        
+                    </div>
+                </div>
+                
+                <div id="bubblealert-container" class="open" >
+                    <div id="data-bubblealert">
+                        
+                        <div class="bubblealert-box">
+                            <div class="bubblealert-content">
+                            </div>
+                        </div>
+                        
+                        <div class="triangle">
+                            <div class="trileft"></div><div class="triright"></div>
+                        </div>
+                        
+                        <div id="bubblealert-close-button">
+                        </div>
+                        
+                    </div>
+                </div>
+                
+            </div>
+           
+        </div>
+        <div class="header-box-ombre"></div>
+    </div>
+</header>
+                            <section id="topbar" >
+		            			<div id="primary-nav" >
+					
+						<div class="wrap nav">
+							
+				    <ul id="menu-header" class=""><li id="menu-item-2237" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2237"><a href="index.html?ID=1" >Accueil</a></li>
+					<li id="menu-item-2239" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2239"><a title="A propos du blog" href="#">A propos</a></li>
+					<li id="menu-item-2227" class="menu-item menu-item-type-post_type menu-item-object-page current_page_parent menu-item-has-children menu-item-2227"><a href="#">Le Campus</a>
+					<ul class="sub-menu">
+						<li id="menu-item-2233" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-2233"><a href="#">Actualités</a></li>
+						<li id="menu-item-2242" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-2242"><a href="#">Concours</a></li>
+						<li id="menu-item-2257" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-2257"><a href="#">Présentation du campus</a></li>
+						<li id="menu-item-2235" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-2235"><a href="#">Les ressources</a></li>
+						<li id="menu-item-2230" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-2230"><a href="#">Apports et intérêts</a></li>
+						<li id="menu-item-2234" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-2234"><a href="#">Organisation</a></li>
+					</ul>
+					</li>
+					<li id="menu-item-2253" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-2253"><a title="" href="#">contact</a>
+					<ul class="sub-menu">
+						<li id="menu-item-2280" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2280"><a title="" href="Contacts.html">Nous contacter</a></li>
+						<li id="menu-item-2279" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2279"><a title="" href="#">Contacts techniques</a></li>
+						<li id="menu-item-2252" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2252"><a title="" href="#">Contacts pédagogiques</a></li>
+					</ul>
+					</li>
+					<li id="menu-item-2238" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2238"><a title="Ressources et outils indispensables pour webmasters" href="#">Ressources</a></li>
+					<li id="menu-item-2347" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-2347"><a href="#">Les Auteurs</a>
+					<ul class="sub-menu">
+						<li id="menu-item-2348" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2348"><a title="" href="#">Les outils</a></li>
+						<li id="menu-item-2350" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2350"><a title="" href="#">Devenir auteur</a></li>
+					</ul>
+					</li>
+					<li id="menu-item-2347" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-2347"><a href="#">Actualités</a>
+					<ul class="sub-menu">
+						<li id="menu-item-2348" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2348"><a title="" href="#">Newsletter</a></li>
+						<li id="menu-item-2350" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2350"><a title="" href="#">Archives</a></li>
+						<li id="menu-item-2350" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2350"><a title="" href="#">Archives newsletter</a></li>
+					</ul>
+					</li>
+					<li id="menu-item-2347" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-2347"><a href="#">Aide</a>
+					<ul class="sub-menu">
+						<li id="menu-item-2348" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2348"><a title="" href="#">Plugins</a></li>
+						<li id="menu-item-2350" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2350"><a title="" href="#">FAQ</a></li>
+						<li id="menu-item-2350" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2350"><a title="" href="#">Guide de l'utilisateur</a></li>
+					</ul>
+					</li>
+					</ul>			
+					
+							<div id="search">
+								<form method="get" id="searchform" action="http://www.webandseo.fr">
+									<input type="text" class="field" name="s" id="s"  value="Rechercher..." onfocus="if (this.value == 'Rechercher...') {this.value = '';}" onblur="if (this.value == '') {this.value = 'Rechercher...';}" />
+									<input class="submit " type="image" src="sites//all/themes/vtrois/images/search.gif" value="Go" style="background:none;border:none;margin:6px 0px 0px -17px;padding:0px;width:auto;" />
+								</form>
+							</div>
+							
+						</div>
+						
+					</div>
+                            </section>
+                    
+                                          
+               <section id="contenu" style=" float:left; margin-top: 5px;">
+               								 <div>
+                                             <object data="rechercher-un-emploi.html" type="text/html" style="float:left; width: 1348px;height: 3500px;"/>
+               								</div>
+               	</section>
+              
+			                <section id="footer" style="float: left;">      
+								<!--footer -->
+								    <footer>
+									    <div   style="display:block; ">
+											   <p align="center" style="color:white">Copyright &copy; 2014 EST - Tous droits R&eacute;serv&eacute;s - <a href="#">www.EST.ma</a></p>
+													 
+											   <p align="center" style="color:white"><a href="index.html">Accueil</a> | <a href="mentions_legales.php">Mentions L&eacute;gales</a> | <a href="contact.php">Contact</a></p>
+													    
+											   <p align="center" style="color:white; margin-bottom:10px">Suivez-nous:
+													    <a href="#"><img src="sites/all/themes/vtrois/images/fb.png" alt=""  width="24" height="24"></a>
+													    <a href="#"><img src="sites/all/themes/vtrois/images/twitter-icon.png" alt=""  width="24" height="24"></a>
+											    	</p>	
+						                </div>    
+						                
+					                </footer>
+					            <!--End footer-->
+				             </section> 
+    </body>
+   
+    
+    <script type="text/javascript" src="0.js"></script>
+		
+		 <script type="text/javascript">
+
+    $(document).ready(function(){
+        $(".buton-row-see-cartable").click(function(){
+        	$("#bubble-container").fadeIn("slow");
+        });
+
+        $("#bubble-close-button").click(function(){
+        	$("#bubble-container").fadeOut("slow");
+        });
+
+        $("#cartables").click(function(){
+        	if(document.getElementById('cartablesPuce').getAttribute('class').trim()=='puce ddbutton-puce'){
+        		document.getElementById('cartablesPuce').setAttribute('class', 'puce ddbutton-puce open');
+        		$("#ressources").slideToggle("slow");
+            	}
+        	
+        	else {  
+        		$("#ressources").slideToggle("slow",function(){
+        		document.getElementById('cartablesPuce').setAttribute('class', 'puce ddbutton-puce');
+        		});
+        	}
+        });
+
+
+        $("#stage").click(function(){
+        	if(document.getElementById('stagePuce').getAttribute('class').trim()=='puce ddbutton-puce'){
+        		document.getElementById('stagePuce').setAttribute('class', 'puce ddbutton-puce open');
+        		$("#stageR").slideToggle("slow");
+            	}
+        	
+        	else {  
+        		$("#stageR").slideToggle("slow",function(){
+        		document.getElementById('stagePuce').setAttribute('class', 'puce ddbutton-puce');
+        		});
+        	}
+        });
+    });
+    
+    </script>
+		
+</html>

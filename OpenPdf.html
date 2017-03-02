@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+
+<object type="application/pdf" name="PDF" id="PDF" width="100%" height="700px" data=""> 
+</object>
+
+</body>
+<script type="text/javascript"> 
+PDF.SetShowToolBar("true"); //--- barre d'outils true(visible) false(non visible) ---// 
+PDF.SetShowScrollbar("true"); //--- barre de scroll true(visible) false(non visible) ---// 
+PDF.SetPageMode("none"); //--- cache les signets ---// 
+PDF.setZoom(100%); //--- Zoom le document à 80% ---// 
+</script>
+
+<script type="text/javascript">
+
+function receive()
+{
+	       var parameters = location.search.substring(1).split("&");
+		   var data = "";
+		   var Identif="0"
+		   for (x in parameters)
+		   {
+		       var temp = parameters[x].split("=");
+		       thevar = unescape(temp[0]);
+		       thevalue = unescape(temp[1]);
+		       thevalue = thevalue.replace("+", " ");
+		       if (thevar=="chemin") {
+		    	   Identif=thevalue;
+		    	   thevalue="0";
+				    	  if (Identif!="0") {
+				    		  document.getElementById("PDF").setAttribute('data',Identif);
+						  } 
+			  }
+		       data += thevar + "=" + thevalue + "\n";
+		   }
+}
+		window.onload=receive();
+</script>
+</html>

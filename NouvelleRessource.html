@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+
+<meta name="viewport" content="initial-scale = 1,user-scalable=no,maximum-scale=1.0" />
+
+<!-- 
+<meta name="apple-mobile-web-app-capable" content="yes" />
+ -->
+ 
+  
+<meta HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+<meta HTTP-EQUIV="EXPIRES" CONTENT="Mon, 22 Jul 2002 11:12:01 GMT">
+ 
+  
+         <!-- styles -->
+        
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<link rel="stylesheet" type="text/css" href="sites/all/themes/vtrois/css/vtrois.css?r5541" />
+<link rel="stylesheet" type="text/css" href="sites/all/themes/vtrois/css/ddmenu.css" />
+
+<link rel="stylesheet" type="text/css" href="sites/all/themes/vtrois/css/footer.css" />
+<link rel="stylesheet" type="text/css" href="sites/all/themes/vtrois/css/datepicker.css" id="stylesheet-datepicker" />
+<link rel="stylesheet" type="text/css" href="sites/all/modules/devel/devel.css" id="stylesheet-datepicker" />
+
+<link rel="stylesheet" type="text/css" href="sites/all/themes/vtrois/css/ddsf.css" />
+<link rel="stylesheet" type="text/css" href="sites/all/themes/vtrois/css/featherlight.css" />
+
+
+
+
+<!-- jQuery START -->
+<script type="text/javascript" src="sites/all/themes/vtrois/js/jquery.min.js"></script>
+<script type="text/javascript" src="sites/all/themes/vtrois/js/jquery-ui.min.js"></script>
+<!-- jQuery END -->
+
+
+<style type="text/css">
+#report-upload-form {
+    background-color: #C0C0C0;
+    color: #181818 ;
+    font-weight:bold;
+    margin: 50px auto 0 auto;
+    padding-bottom: 20px;
+    padding-top: 20px;
+    border-radius:10px;
+    width: 650px;
+    box-shadow:  10px 10px 5px 0   #202020;
+	
+}
+
+#report-upload-form label {
+    padding-left:26px;
+    width:200px;
+    
+    display:inline-block
+}
+
+#report-upload-form input[type=text], 
+#report-upload-form input[type=file],
+#report-upload-form textarea {
+    width: 305px;
+}
+#report-upload-form textarea {
+    margin-left: 230px;
+}
+</style>
+</head>
+<body>
+	
+	
+		
+		
+
+        <div class="diel-container container-resource-card">
+            <article id="resource-card" class="menu-open">
+                <img alt="TopIm" src="Cours/images/Ress.png" style="margin-left: 0px;">
+<form id="report-upload-form">
+		<p style="text-align: center;">
+		    <em><strong><font size="6">Formulaire nouvelle ressource</font></em></strong>.
+		</p>
+		<br>
+	    <p>
+	    			<label>Type du ressource   :</label>   
+					<select style="width: 137px;">
+					    <option>Type</option>
+						<option>Document</option>
+						<option>Video</option>
+						<option>Exercice</option>
+						<option>Image</option>
+					</select>
+		</p>
+		<br>
+		<p>
+					<label>Titre du Ressoources   :</label>
+					<input type="text" style="padding-left: 5px;">
+		</p>
+		<br>
+		<p>
+					<label>Mot clé   : </label>  
+					<input type="text" style="padding-left: 5px;">
+		</p>
+		<br>
+		<p>
+					<label>Résumé    : </label><br>
+					<textarea id="id_description" rows="3" cols="40" name="description" style="padding-left: 5px;"></textarea>
+		</p>
+		<br>
+		<p>
+					<label>Auteur    : </label>  
+					<select style="width: 137px;">
+						<option>Auteur</option>
+						<option>Auteur</option>
+						<option>Auteur</option>
+						<option>Auteur</option>
+						<option>Auteur</option>
+						<option>Auteur</option>
+						<option>Auteur</option>
+						<option>Auteur</option>
+						<option>Auteur</option>
+						<option>Auteur</option>
+						<option>Auteur</option>
+						<option>Auteur</option>
+					</select>
+					<input type="button" value="NouveauAut">
+		</p>
+		<br>
+		<p>
+					<label><em>emplacement du ressource  :</em></label>
+					<input type="file" width="100px;" >
+		</p>
+		<br>
+		<p>
+					<label><em>Image associé   :</em></label>
+					<input type="file" width="100px;" >
+		</p>
+		<br>
+		<p style="text-align: center;">
+					<input type="button" value="Enregistrer">
+		</p>
+		<br>
+		</form>
+               
+            </article><div id="sidebar">
+                <style type="text/css">
+  
+    .count-box-sidebar {
+        text-align: left;
+        margin-left:12px;
+    }
+    
+    .twitter-follow-button {
+        margin-top: 0px;
+        margin-left:5px;
+    }
+    
+    .share-box-sidebar {
+        margin-bottom: 10px;
+    }
+</style>
+<div class="share-box-sidebar" style="margin-top: 250px;">
+    <iframe src="//www.facebook.com/plugins/like.php?href=https%3A%2F%2Fwww.facebook.com%2FIUTenligne.net&amp;width&amp;layout=button_count&amp;action=like&amp;show_faces=false&amp;share=false&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:160px; height:21px; display: inline-block;" allowTransparency="true"></iframe>
+    <div class="share-links">
+    <a href="http://www.facebook.com/sharer/sharer.php?s=100&p[url]=www.iutenligne.net&p[images][0]=&p[title]=IUT+en+Ligne&p[summary]=Le+catalogue+de+ressources+p%C3%A9dagogiques+de+l%E2%80%99enseignement+technologique+universitaire." title="Partager avec Facebook" target="_blank" ><span class="button fb"></span></a>
+    <a href="http://twitter.com/home?status=IUT+en+Ligne http://www.iutenligne.net%20#iutenligne%20#ressources" title="Partager avec Twitter" target="_blank" ><span class="button tw"></span></a>
+    <a href="https://plus.google.com/share?url=www.iutenligne.net" title="Partager avec Google Plus" target="_blank" ><span class="button gp"></span></a>
+</div>    
+    <div class="count-box-sidebar">
+          <script type="text/javascript">
+          window.twttr = (function (d, s, id) {
+            var t, js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src= "https://platform.twitter.com/widgets.js";
+            fjs.parentNode.insertBefore(js, fjs);
+            return window.twttr || (t = { _e: [], ready: function (f) { t._e.push(f) } });
+          }(document, "script", "twitter-wjs"));
+          </script>
+    </div>
+
+</div>
+    <style>
+
+        #teaser-26627 > .teaser-box  {
+            height : 190px;        }
+
+        #teaser-26627:hover > .teaser-box  {
+            height : 190px;        }
+        #teaser-26627 > .teaser-box {
+            background: #e3e7f4 url('http://www.iutenligne.net/sites/default/files/tableau_0_0.png') top right no-repeat;        }
+        #teaser-26627 > .teaser-box > .hidden-description {
+            margin-top: 25px;        }
+        #teaser-26627 > h2 {
+            background-color: #cbd7eb;            color: #7c7d7f;            border-bottom : #7c7d7f;        }
+
+    </style>
+    <aside id="teaser-26627" class="teaser teaser-lap">
+        <h2>ESTenligne </h2>
+        <div class="teaser-box">
+                            <div class="description">
+                    <p class="teaser-style-2" style="margin-top:5px; text-align:right;line-height: 18px;"><strong>15 ANS !!!<br />
+au service<br />
+des enseignants<br />
+et</strong> <strong> des étudiants</strong><br />
+&nbsp;</p>
+
+<p class="teaser-style-2" style="margin-top:-15px;font-size: 14px;line-height:15px"><strong>Présentations, tables rondes, retours d'expériences,...<br />
+<span style="color:#636363">les 3 et 4 juin 2015<br />
+à l'université Paris X Nanterre</span></strong></p>
+
+<p class="teaser-style-2" style="text-align:right;"><strong><a href="http://www.iutenligne.net/quinze-ans-IEL" style="color:#636363" target="_blank">Informations et inscription...</a></strong></p>
+                </div>
+                                </div>
+        <div class="teaser-ombre">
+        </div>
+    </aside>
+    <style>
+
+        #teaser-33818 > .teaser-box  {
+            height : 115px;        }
+
+        #teaser-33818:hover > .teaser-box  {
+            height : 200px;        }
+        #teaser-33818 > .teaser-box {
+            background: #f4facc url('http://www.iutenligne.net/sites/default/files/teaser-folder_0.jpg') top right no-repeat;        }
+        #teaser-33818 > .teaser-box > .hidden-description {
+            margin-top: 80px;        }
+        #teaser-33818 > h2 {
+            background-color: #dee69d;            color: #7c7d7f;            border-bottom : #7c7d7f;        }
+
+    </style>
+    <aside id="teaser-33818" class="teaser teaser-lap">
+        <h2>Droits d'auteur</h2>
+        <div class="teaser-box">
+                            <div class="description">
+                    <p class="teaser-style-2"><strong>Une carte mentale pour savoir comment et pourquoi faire travailler les étudiants sur des ressources en ligne.</strong></p>
+                </div>
+                                        <div class="hidden-description">
+                    <p class="teaser-style-2"><strong><a href="http://www.mindomo.com/fr/mindmap/27b4fa5c6c044835b3677ee8f701c45c" target="_blank">A découvrir ici...</a></strong></p>
+                </div>
+                    </div>
+        <div class="teaser-ombre">
+        </div>
+    </aside>
+    <style>
+
+        #teaser-29103 > .teaser-box  {
+            height : 92px;        }
+
+        #teaser-29103:hover > .teaser-box  {
+            height : 225px;        }
+        #teaser-29103 > .teaser-box {
+            background: #ffffff url('http://www.iutenligne.net/sites/default/files/teaser-aide.jpg') top right no-repeat;        }
+        #teaser-29103 > .teaser-box > .hidden-description {
+            margin-top: 60px;        }
+        #teaser-29103 > h2 {
+            background-color: #d7d7d7;            color: #7c7d7f;            border-bottom : #7c7d7f;        }
+
+    </style>
+    <aside id="teaser-29103" class="teaser teaser-lap">
+        <h2>Guide de l'utilisateur</h2>
+        <div class="teaser-box">
+                            <div class="description">
+                    <p class="teaser-style-2"><strong>Vous découvrez la nouvelle version<br />
+	du site esttenligne.net.</strong><br />
+	<strong>Un guide concis&nbsp;</strong><strong>a été<br />
+	fait à votre usage.</strong></p>
+                </div>
+                                        <div class="hidden-description">
+                    <p class="teaser-style-3">Si vous êtes étudiant ou enseignant en EST,<br />
+	consultez <a href="http://www.iutenligne.net/aide/guide-de-l-utilisateur.html"><span style="color:#808080;"><strong>la page d'aide</strong></span></a>.</p>                </div>
+                    </div>
+        <div class="teaser-ombre">
+        </div>
+    </aside>
+    <style>
+
+        #teaser-31518 > .teaser-box  {
+            height : 115px;        }
+
+        #teaser-31518:hover > .teaser-box  {
+            height : 245px;        }
+        #teaser-31518 > .teaser-box {
+            background: #f4facc url('http://www.iutenligne.net/sites/default/files/teaser-publiez.jpg') top right no-repeat;        }
+        #teaser-31518 > .teaser-box > .hidden-description {
+            margin-top: 80px;        }
+        #teaser-31518 > h2 {
+            background-color: #dee69d;            color: #7c7d7f;            border-bottom : #7c7d7f;        }
+
+    </style>
+    <aside id="teaser-31518" class="teaser teaser-lap">
+        <h2>Publiez vos ressources</h2>
+        <div class="teaser-box">
+                            <div class="description">
+                    <p class="teaser-style-2"><strong>Auteurs, médiatiseurs, réaliser vos ressources numériques grâce à notre sélection d'outils.</strong></p>
+                </div>
+                                        <div class="hidden-description">
+                    <p class="teaser-style-3"><strong>Découvrez :</strong><br />
+	<strong><a href="http://www.iutenligne.net/les-auteurs/les-outils.html"><span style="color:#808080;">Opale, Elearning Maker</span></a>,<br />
+	<a href="http://www.iutenligne.net/resources.html?text=&amp;diplome=All&amp;domaines=All&amp;ct=1&amp;ca=1&amp;cc=1&amp;ci=1&amp;ck=1&amp;title=&amp;resume=&amp;keywords=&amp;code=&amp;aname=&amp;asname=&amp;lrt=evaluation&amp;level=All"><span style="color:#808080;">MIEL : Moodle pour ESTenligne</span></a>,<br />
+	<a href="http://www.iutenligne.net/les-auteurs/les-outils.html"><span style="color:#808080;">Modulest, ExeLearning</span></a>...</strong></p>
+                </div>
+                    </div>
+        <div class="teaser-ombre">
+        </div>
+    </aside>
+    <style>
+
+        #teaser-32406 > .teaser-box  {
+            height : 130px;        }
+
+        #teaser-32406:hover > .teaser-box  {
+            height : 250px;        }
+        #teaser-32406 > .teaser-box {
+            background: #ffffff url('http://www.iutenligne.net/sites/default/files/teaser-iut.jpg') top right no-repeat;        }
+        #teaser-32406 > .teaser-box > .hidden-description {
+            margin-top: 40px;        }
+        #teaser-32406 > h2 {
+            background-color: #d7d7d7;            color: #7c7d7f;            border-bottom : #7c7d7f;        }
+
+    </style>
+    <aside id="teaser-32406" class="teaser teaser-lap">
+        <h2>Les formations en EST</h2>
+        <div class="teaser-box">
+                            <div class="description">
+                    <p class="teaser-style-2"><strong>Dans toute le maroc : 1 EST,<br />
+	658 départements de formation<br />
+	pour&nbsp;25 spécialités<br />
+	de DUT</strong>&nbsp;<strong>et,</strong><br />
+	<strong>852 Licences<br />
+	Professionnelles.</strong></p>
+                </div>
+                                        <div class="hidden-description">
+                    <p class="teaser-style-3">Trouvez une formation<br />
+	près de chez vous.<br />
+	<a href="http://www.iut.fr" target="_blank"><span style="color:#808080;"><strong>Visitez le site EST.ma</strong></span></a></p>
+                </div>
+                    </div>
+        <div class="teaser-ombre">
+        </div>
+    </aside>
+
+    <style>
+
+        #teaser-tab-26627 > .teaser-box  {
+            height : 190px;        }
+
+        #teaser-tab-26627 > .teaser-box {
+            background: #e3e7f4 url('http://www.iutenligne.net/sites/default/files/tableau_0_0.png') top right no-repeat;        }
+        #teaser-tab-26627 > .teaser-box > .hidden-description {
+            margin-top: 25px;        }
+        #teaser-tab-26627 > h2 {
+            background-color: #cbd7eb;            color: #7c7d7f;            border-bottom : #7c7d7f;        }
+
+    </style>
+    <aside id="teaser-tab-26627" class="teaser teaser-tab">
+        <h2>ESTenligne </h2>
+        <div class="teaser-box">
+                            <div class="description">
+                    <p class="teaser-style-2" style="margin-top:5px; text-align:right;line-height: 18px;"><strong>15 ANS !!!<br />
+au service<br />
+des enseignants<br />
+et</strong> <strong> des étudiants</strong><br />
+&nbsp;</p>
+
+<p class="teaser-style-2" style="margin-top:-15px;font-size: 14px;line-height:15px"><strong>Présentations, tables rondes, retours d'expériences,...<br />
+<span style="color:#636363">les 3 et 4 juin 2015<br />
+à l'université Paris X Nanterre</span></strong></p>
+
+<p class="teaser-style-2" style="text-align:right;"><strong><a href="http://www.iutenligne.net/quinze-ans-IEL" style="color:#636363" target="_blank">Informations et inscription...</a></strong></p>
+                </div>
+                                </div>
+        <div class="teaser-ombre">
+        </div>
+    </aside>
+    <style>
+
+        #teaser-tab-33818 > .teaser-box  {
+            height : 200px;        }
+
+        #teaser-tab-33818 > .teaser-box {
+            background: #f4facc url('http://www.iutenligne.net/sites/default/files/teaser-folder_0.jpg') top right no-repeat;        }
+        #teaser-tab-33818 > .teaser-box > .hidden-description {
+            margin-top: 80px;        }
+        #teaser-tab-33818 > h2 {
+            background-color: #dee69d;            color: #7c7d7f;            border-bottom : #7c7d7f;        }
+
+    </style>
+    <aside id="teaser-tab-33818" class="teaser teaser-tab">
+        <h2>Droits d'auteur</h2>
+        <div class="teaser-box">
+                            <div class="description">
+                    <p class="teaser-style-2"><strong>Une carte mentale pour savoir comment et pourquoi faire travailler les étudiants sur des ressources en ligne.</strong></p>
+                </div>
+                                        <div class="hidden-description">
+                    <p class="teaser-style-2"><strong><a href="http://www.mindomo.com/fr/mindmap/27b4fa5c6c044835b3677ee8f701c45c" target="_blank">A découvrir ici...</a></strong></p>
+                </div>
+                    </div>
+        <div class="teaser-ombre">
+        </div>
+    </aside>
+    <style>
+
+        #teaser-tab-29103 > .teaser-box  {
+            height : 225px;        }
+
+        #teaser-tab-29103 > .teaser-box {
+            background: #ffffff url('http://www.iutenligne.net/sites/default/files/teaser-aide.jpg') top right no-repeat;        }
+        #teaser-tab-29103 > .teaser-box > .hidden-description {
+            margin-top: 60px;        }
+        #teaser-tab-29103 > h2 {
+            background-color: #d7d7d7;            color: #7c7d7f;            border-bottom : #7c7d7f;        }
+
+    </style>
+    <aside id="teaser-tab-29103" class="teaser teaser-tab">
+        <h2>Guide de l'utilisateur</h2>
+        <div class="teaser-box">
+                            <div class="description">
+                    <p class="teaser-style-2"><strong>Vous découvrez la nouvelle version<br />
+	du site estenligne.net.</strong><br />
+	<strong>Un guide concis&nbsp;</strong><strong>a été<br />
+	fait à votre usage.</strong></p>
+                </div>
+                                        <div class="hidden-description">
+                    <p class="teaser-style-3">Si vous êtes étudiant ou enseignant en EST,<br />
+	consultez <a href="http://www.iutenligne.net/aide/guide-de-l-utilisateur.html"><span style="color:#808080;"><strong>la page d'aide</strong></span></a>.</p>                </div>
+                    </div>
+        <div class="teaser-ombre">
+        </div>
+    </aside>
+            </div>
+        </div>
+       
+
+        <br/>
+		
+	
+</body>
+</html>

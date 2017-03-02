@@ -1,0 +1,493 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>S&eacute;lection de votre Home Organisation</title> 
+        <meta http-equiv="content-type" content="text/html; charset=utf-8">
+        <meta name="keywords" content="Home Organisation, Discovery Service, WAYF, Shibboleth, Login, AAI">
+        <meta name="description" content="Choose your home organisation to authenticate">
+        <link rel="stylesheet" type="text/css" href="sites/all/themes/vtrois/css/style-page-identification.css">
+        <meta name="viewport" content="initial-scale = 1,user-scalable=no,maximum-scale=1.0">
+        
+        <script src="sites/all/themes/vtrois/js/jquery.min.js"></script>
+        <!--<script type="text/javascript" src="http://www.iutenligne.net/wayf/js/jquery.js"></script>-->
+        
+        <script type="text/javascript" src="sites/all/themes/vtrois/js/improvedDropDown.js"></script>
+        
+        <script type="text/javascript" src="sites/all/themes/vtrois/js/ddbutton.js"></script>
+        
+        <script language="JavaScript" type="text/javascript">
+        
+	
+            // Prevent that WAYF is loaded in an IFRAME
+            function preventIframeEmbedding() {
+                if (top != self) {
+                    top.location = self.location;
+                }
+            }
+
+            // Set focus to submit button or drop down list
+            function setFocus() {
+                // Skip this if we cannot access the form elements
+                if (
+                        !document.IdPList ||
+                        !document.IdPList.Select
+                        ) {
+                    return;
+                }
+
+                if (
+                        document.IdPList.user_idp &&
+                        document.IdPList.user_idp.selectedIndex == 0
+                        ) {
+                    // Set focus to select
+                    document.IdPList.user_idp.focus();
+                } else {
+                    // Set focus to submit button
+                    document.IdPList.Select.focus();
+                }
+            }
+
+            // Confirm action
+            function showConfirmation() {
+
+                return confirm(unescape('Êtes-vous sû de vouloir définir votre sélection comme votre Home Organisation par défaut ? N\'utilisez pas cette fonction si vous avez plusieurs identités AAI.'));
+            }
+
+            // Confirm permanent selection
+            function showPermanentConfirmation() {
+
+                var message = unescape('Vous pouvez réinitialiser la propriété par défaut en allant à l\'adresse: %s');
+                message = message.replace('%s', window.location.href.replace(/\?.+/, ''));
+                return alert(message);
+            }
+
+            // Perform input validation on WAYF form
+            function checkForm() {
+                if (
+                        document.IdPList.user_idp &&
+                        document.IdPList.user_idp.selectedIndex == 0
+                        ) {
+                    alert(unescape('Vous devez sélectionner une Home Organisation valide.'));
+                    return false;
+                } else {
+                    if (document.IdPList.permanent && document.IdPList.permanent.checked) {
+                        return showConfirmation();
+                    } else {
+                        return true;
+                    }
+                }
+            }
+
+            // Init WAYF
+            function init() {
+                preventIframeEmbedding();
+
+                setFocus();
+
+                if (true && false ) {
+
+                    var searchText = 'Veuillez taper le nom de l\'organisation à laquelle vous appartenez.';
+                    $("#userIdPSelection:enabled option[value='-']").text(searchText);
+
+                    // Convert select element into improved drop down list
+                    $("#userIdPSelection:enabled").improveDropDown({
+                        iconPath: 'http://www.iutenligne.net/wayf/images/drop_icon.png',
+                        noMatchesText: '',
+                        noItemsText: ''
+                    });
+                }
+            }
+
+            // Call init function when DOM is ready
+            $(document).ready(init);
+
+           
+        </script>
+
+        
+    </head>
+  <script src= "sites/all/themes/vtrois/js/angular.min.js"></script>
+  
+  
+    <body>
+        <div id="container">
+            <div id="container-top">
+<h1>Se connecter</h1>
+<div class="ombre ddbutton ddgroup-userlogin" id="btn_shib">
+    <form id="IdPList" name="IdPList" method="post" onSubmit="return checkForm()" action="/wayf/WAYF.php?entityID=http%3A%2F%2Fwww.iutenligne.net&amp;return=http%3A%2F%2Fwww.iutenligne.net%2FShibboleth.sso%2FDS%3FSAMLDS%3D1%26target%3Dcookie%253Aa8877c06">
+        
+        <div class="puce ddbutton-puce"></div>
+        <h2 class="ddbutton-action">Avec votre compte universitaire</h2>
+        <div id="userInputArea" class="ddbutton-target" style="display: none">
+            <select name="user_idp" id="userIdPSelection"> 
+                <option value="-" selected="selected">Veuillez s&eacute;lectionner l'organisation &agrave; laquelle vous appartenez. ...</option>
+                
+		<option title="agrocampus-ouest.fr AGROCAMPUS OUEST" value="https://federation.agrocampus-ouest.fr/idp/shibboleth">AGROCAMPUS OUEST</option>
+		<option title="amue.fr AMUE - Agence de Mutualisation des Universités et Etablissements" value="https://idp.amue.fr/idp/saml2/metadata">AMUE - Agence de Mutualisation des Universités et Etablissements</option>
+		<option title="auf.org Agence universitaire de la Francophonie (AUF)" value="https://id.auf.org/idp/saml2/metadata">Agence universitaire de la Francophonie (AUF)</option>
+		<option title="agroparistech.fr AgroParisTech Institut des sciences et des industries du vivant et de l'environnement" value="https://idp1.agroparistech.fr/shibboleth">AgroParisTech Institut des sciences et des industries du vivant et de l'environnement</option>
+		<option title="agropolis.fr Agropolis International" value="https://aishib.agropolis.fr/idp/shibboleth">Agropolis International</option>
+		<option title="agrosupdijon.fr Agrosup DIJON INSSAAE Agrosup DIJON INSSAAE" value="https://auth.agrosupdijon.fr/idp/shibboleth">Agrosup DIJON INSSAAE</option>
+		<option title="cereq.fr CEREQ - Centre d'études et de recherches sur les qualifications" value="https://idp.cereq.fr/idp/shibboleth">CEREQ - Centre d'études et de recherches sur les qualifications</option>
+		<option title="cern.ch CERN" value="https://cern.ch/login">CERN</option>
+		<option title="iamm.fr CIHEAM / IAMM CIHEAM / IAMM" value="https://vmfetid.iamm.fr/idp/shibboleth">CIHEAM / IAMM</option>
+		<option title="cirad.fr CIRAD" value="https://idp.cirad.fr/idp/shibboleth">CIRAD</option>
+		<option title="cndp.fr CNDP - Centre National de Documentation Pédagogique" value="https://shibboleth.cndp.fr/idp/shibboleth">CNDP - Centre National de Documentation Pédagogique</option>
+		<option title="cnous.fr CNOUS" value="https://idp.cnous.fr/idp/shibboleth">CNOUS</option>
+		<option title="cnous.fr CNOUS Personnels" value="https://idpcnous.cnous.fr/idp/shibboleth">CNOUS Personnels</option>
+		<option title="cnrs.fr CNRS" value="urn:mace:cnrs.fr:janus.dsi.cnrs.fr">CNRS</option>
+		<option title="cnrs.fr CNRS (new) CNRS (new)" value="https://janus.cnrs.fr/idp">CNRS (new)</option>
+		<option title="cpe.fr CPE Lyon" value="https://idp.cpe.fr/idp/shibboleth">CPE Lyon</option>
+		<option title="crdp-aquitaine.fr CRDP d'Aquitaine" value="https://srv-cr-idp.crdp-aquitaine.fr/idp/shibboleth">CRDP d'Aquitaine</option>
+		<option title="crihan.fr CRIHAN CRIHAN" value="https://idp.crihan.fr/saml2/idp/metadata.php">CRIHAN</option>
+		<option title="crous-aix-marseille.fr CROUS Aix Marseille" value="https://idp1.crous-aix-marseille.fr/idp/shibboleth">CROUS Aix Marseille</option>
+		<option title="crous-amiens.fr CROUS Amiens Picardie" value="https://shibb.crous-amiens.fr/idp/shibboleth">CROUS Amiens Picardie</option>
+		<option title="crous-antillesguyane.fr CROUS Antilles-Guyane CROUS Antilles-Guyane" value="https://idp.crous-antillesguyane.fr/idp/shibboleth">CROUS Antilles-Guyane</option>
+		<option title="crous-besancon.fr CROUS Besançon" value="https://idp.crous-besancon.fr/idp/shibboleth">CROUS Besançon</option>
+		<option title="crous-caen.fr Crous Caen CROUS Caen" value="https://idp.crous-caen.fr/idp/shibboleth">CROUS Caen</option>
+		<option title="crous-clermont.fr CROUS Clermont-Ferrand" value="https://idp.crous-clermont.fr/idp/shibboleth">CROUS Clermont-Ferrand</option>
+		<option title="crous-creteil.fr CROUS Créteil CROUS Créteil" value="https://idp.crous-creteil.fr/idp/shibboleth">CROUS Créteil</option>
+		<option title="crous-dijon.fr CROUS Dijon - Personnels" value="https://idp.crous-dijon.fr/idp/shibboleth">CROUS Dijon - Personnels</option>
+		<option title="crous-grenoble.fr CROUS Grenoble - Personnels" value="https://idp.crous-grenoble.fr/idp/shibboleth">CROUS Grenoble - Personnels</option>
+		<option title="crous-grenoble.fr CROUS Grenoble - étudiants" value="https://idp-etu.crous-grenoble.fr/idp/shibboleth">CROUS Grenoble - étudiants</option>
+		<option title="crous-lille.fr CROUS Lille CROUS Lille" value="https://federation.crous-lille.fr/idp/shibboleth">CROUS Lille</option>
+		<option title="crous-montpellier.fr CROUS Montpellier" value="https://idp.crous-montpellier.fr/idp/shibboleth">CROUS Montpellier</option>
+		<option title="crous-nancy-metz.fr CROUS Nancy-Metz Lorraine" value="https://idp.crous-nancy-metz.fr/idp/shibboleth">CROUS Nancy-Metz Lorraine</option>
+		<option title="crous-orleans-tours.fr CROUS Orléans-Tours - Personnels CROUS Orléans-Tours - Personnels" value="https://idp.crous-orleans-tours.fr/idp/shibboleth">CROUS Orléans-Tours - Personnels</option>
+		<option title="crous-paris.fr CROUS Paris CROUS Paris" value="https://idp.crous-paris.fr/idp/shibboleth">CROUS Paris</option>
+		<option title="crous-poitiers.fr CROUS Poitiers - Etudiants" value="https://shibboleth.crous-poitiers.fr/idp/shibboleth">CROUS Poitiers - Etudiants</option>
+		<option title="crous-poitiers.fr CROUS Poitiers - Personnels" value="https://shibboleth2.crous-poitiers.fr/idp/shibboleth">CROUS Poitiers - Personnels</option>
+		<option title="crous-reims.fr CROUS Reims CROUS Reims" value="https://idp.crous-reims.fr/idp/shibboleth">CROUS Reims</option>
+		<option title="crous-rennes.fr CROUS Rennes - Personnels" value="https://idp.crous-rennes.fr/idp/shibboleth">CROUS Rennes - Personnels</option>
+		<option title="crous-rouen.fr CROUS Rouen - Personnels" value="https://si.crous-rouen.fr/idp/shibboleth">CROUS Rouen - Personnels</option>
+		<option title="crous-strasbourg.fr CROUS Strasbourg CROUS Strasbourg" value="https://idp.crous-strasbourg.fr/idp/shibboleth">CROUS Strasbourg</option>
+		<option title="crous-toulouse.fr CROUS Toulouse - Etudiants" value="https://idp1.crous-toulouse.fr/idp/shibboleth">CROUS Toulouse - Etudiants</option>
+		<option title="crous-toulouse.fr CROUS Toulouse - Personnels" value="https://idp2.crous-toulouse.fr/idp/shibboleth">CROUS Toulouse - Personnels</option>
+		<option title="crous-versailles.fr CROUS Versailles - Personnels" value="https://auth.crous-versailles.fr/idp/shibboleth">CROUS Versailles - Personnels</option>
+		<option title="crous-limoges.fr CROUS de Limoges CROUS de Limoges" value="https://idp.crous-limoges.fr/idp/shibboleth">CROUS de Limoges</option>
+		<option title="crous-lyon.fr CROUS de Lyon CROUS de Lyon" value="https://cas.crous-lyon.fr/idp/shibboleth">CROUS de Lyon</option>
+		<option title="crous-nantes.fr CROUS of Nantes CROUS de Nantes" value="https://idp.crous-nantes.fr/idp/shibboleth">CROUS de Nantes</option>
+		<option title="crous-nice.fr CROUS de Nice - Employee CROUS de Nice - Personnels" value="https://idp.crous-nice.fr/idp/shibboleth">CROUS de Nice - Personnels</option>
+		<option title="crous-poitiers.fr CROUS de Poitiers" value="https://idp.crous-poitiers.fr/idp/shibboleth">CROUS de Poitiers</option>
+		<option title="univ-bordeaux.fr CUEA - Communauté d'universités et d'établissements d'Aquitaine" value="https://fed.id.univ-bordeaux.fr/idp_ubx/shibboleth">CUEA - Communauté d'universités et d'établissements d'Aquitaine</option>
+		<option title="univ-jfc.fr CUFR Jean-François Champollion" value="https://identities.univ-jfc.fr/idp/prod">CUFR Jean-François Champollion</option>
+		<option title="supelec.fr CentraleSupelec CentraleSupelec" value="https://fede.supelec.fr/idp/shibboleth">CentraleSupelec</option>
+		<option title="chalmers.se Chalmers Chalmers" value="http://idp.chalmers.se/adfs/services/trust">Chalmers</option>
+		<option title="cue-lillenorddefrance.fr Communauté d'Universités et d'Etablissements - Lille Nord de France Communauté d'Universités et d'Etablissements - Lille Nord de France" value="https://idp.cue-lillenorddefrance.fr/shibboleth">Communauté d'Universités et d'Etablissements - Lille Nord de France</option>
+		<option title="cyceron.fr Cyceron Cyceron" value="https://idp.cyceron.fr:8443/idp/shibboleth">Cyceron</option>
+		<option title="ecam.fr ECAM Lyon ECAM Lyon" value="https://idp.ecam.fr/idp/shibboleth">ECAM Lyon</option>
+		<option title="ehess.fr EHESS" value="https://idp.ehess.fr/idp/shibboleth">EHESS</option>
+		<option title="enib.fr ENIB - Ecole Nationale d'Ingénieurs de Brest" value="https://idp.enib.fr/idp/shibboleth">ENIB - Ecole Nationale d'Ingénieurs de Brest</option>
+		<option title="enim.fr ENIM" value="https://identites.enim.fr/idp/">ENIM</option>
+		<option title="enise.fr ENISE" value="https://shibbo.enise.fr/idp/shibboleth">ENISE</option>
+		<option title="enit.fr ENIT Ecole Nationale Ingénieurs Tarbes" value="https://idp.enit.fr/idp/shibboleth">ENIT Ecole Nationale Ingénieurs Tarbes</option>
+		<option title="enitab.fr ENITA de Bordeaux" value="https://idp.enitab.fr/idp/shibboleth">ENITA de Bordeaux</option>
+		<option title="ens-cachan.fr ENS Cachan ENS Cachan" value="https://idp1.ens-cachan.fr/idp/shibboleth">ENS Cachan</option>
+		<option title="ens-lsh.fr ENS Lettres et Sciences humaines" value="urn:mace:cru.fr:federation:ens-lsh.fr">ENS Lettres et Sciences humaines</option>
+		<option title="ens-rennes.fr ENS Rennes" value="https://idp-ensr.ens-rennes.fr/idp/shibboleth">ENS Rennes</option>
+		<option title="ens-lyon.fr ENS de Lyon" value="https://shibboleth.ens-lyon.fr/idp/shibboleth">ENS de Lyon</option>
+		<option title="ensai.fr ENSAI - Ecole Nationale Statistique Analyse de l'Information" value="https://idp.ensai.fr/idp/shibboleth">ENSAI - Ecole Nationale Statistique Analyse de l'Information</option>
+		<option title="ensait.fr ENSAIT - Roubaix" value="https://idp.ensait.fr/idp/shibboleth">ENSAIT - Roubaix</option>
+		<option title="archi.fr ENSAPBX - Ecole Nationale Supérieure d'Architecture et de Paysage de Bordeaux" value="https://janus.bordeaux.archi.fr/idp/shibboleth">ENSAPBX - Ecole Nationale Supérieure d'Architecture et de Paysage de Bordeaux</option>
+		<option title="ensea.fr ENSEA" value="https://identites.ensea.fr/idp/shibboleth">ENSEA</option>
+		<option title="ensicaen.fr ENSICAEN" value="https://shibboleth.ensicaen.fr/idp/shibboleth">ENSICAEN</option>
+		<option title="ensiie.fr ENSIIE" value="https://shibboleth.ensiie.fr/idp/shibboleth">ENSIIE</option>
+		<option title="ensma.fr ENSMA - Ecole Nationale Supérieure de Mécanique et d'Aérotechnique" value="https://idp.ensma.fr/idp/shibboleth">ENSMA - Ecole Nationale Supérieure de Mécanique et d'Aérotechnique</option>
+		<option title="enssib.fr ENSSIB" value="https://idp.enssib.fr/idp/shibboleth">ENSSIB</option>
+		<option title="ensta-bretagne.fr ENSTA Bretagne - Ecole Nationale Supérieure des Techniques Avancées" value="https://ident.ensta-bretagne.fr/idp/shibboleth">ENSTA Bretagne - Ecole Nationale Supérieure des Techniques Avancées</option>
+		<option title="ensta.fr ENSTA Paristech - Ecole Nationale Supérieure de Techniques Avancées" value="https://ident.ensta.fr/idp/shibboleth">ENSTA Paristech - Ecole Nationale Supérieure de Techniques Avancées</option>
+		<option title="entpe.fr ENTPE - Vaulx en Velin" value="https://idp.entpe.fr/idp/shibboleth">ENTPE - Vaulx en Velin</option>
+		<option title="ephe.fr EPHE - Ecole Pratique des Hautes Etudes EPHE - Ecole Pratique des Hautes Etudes" value="https://shibbo.ephe.fr/idp/shibboleth">EPHE - Ecole Pratique des Hautes Etudes</option>
+		<option title="esiee.fr ESIEE Paris" value="https://federation.esiee.fr/idp/shibboleth">ESIEE Paris</option>
+		<option title="espci.fr ESPCI ParisTech" value="https://vip.espci.fr/saml2/idp/metadata.php">ESPCI ParisTech</option>
+		<option title="iufm.fr ESPE de Bourgogne - Dpt MEEF" value="https://idp.dijon.iufm.fr/idp/shibboleth">ESPE de Bourgogne - Dpt MEEF</option>
+		<option title="iufm.fr ESPE de Bretagne" value="https://federation.bretagne.iufm.fr/idp/shibboleth">ESPE de Bretagne</option>
+		<option title="eurecom.fr EURECOM EURECOM" value="https://idp.eurecom.fr/idp/shibboleth">EURECOM</option>
+		<option title="ec-lille.fr Ecole Centrale de LILLE" value="https://idp.ec-lille.fr/idp/shibboleth">Ecole Centrale de LILLE</option>
+		<option title="ec-lyon.fr Ecole Centrale de Lyon" value="https://identites.ec-lyon.fr/idp/shibboleth">Ecole Centrale de Lyon</option>
+		<option title="ec-nantes.fr Ecole Centrale de Nantes" value="https://shibbo.ec-nantes.fr/idp/shibboleth">Ecole Centrale de Nantes</option>
+		<option title="archi.fr ENSA Strasbourg Ecole Nationale Supérieure d'Architecture de Strasbourg" value="https://idp.strasbourg.archi.fr/idp/shibboleth">Ecole Nationale Supérieure d'Architecture de Strasbourg</option>
+		<option title="ensi-bourges.fr Ecole Nationale Supérieure d'Ingénieurs de Bourges" value="https://shibboleth.ensi-bourges.fr/idp/shibboleth">Ecole Nationale Supérieure d'Ingénieurs de Bourges</option>
+		<option title="chimie-paristech.fr Ecole Nationale Supérieure de Chimie Paris Ecole Nationale Supérieure de Chimie Paris" value="https://auth.chimie-paristech.fr/idp/saml2/metadata">Ecole Nationale Supérieure de Chimie Paris</option>
+		<option title="ensc-rennes.fr Ecole Nationale Supérieure de Chimie de Rennes Ecole Nationale Supérieure de Chimie de Rennes" value="https://ident-shib.ensc-rennes.fr/idp/shibboleth">Ecole Nationale Supérieure de Chimie de Rennes</option>
+		<option title="vet-alfort.fr National Veterinary School of Alfort Ecole Nationale Vétérinaire d'ALFORT" value="https://idp.vet-alfort.fr/idp/shibboleth">Ecole Nationale Vétérinaire d'ALFORT</option>
+		<option title="envt.fr Ecole Nationale Vétérinaire de Toulouse (ENVT)" value="https://shibboleth.envt.fr/idp/shibboleth">Ecole Nationale Vétérinaire de Toulouse (ENVT)</option>
+		<option title="ecole-navale.fr Ecole Navale Ecole Navale" value="https://idp.ecole-navale.fr/idp/shibboleth">Ecole Navale</option>
+		<option title="polytechnique.fr Ecole Polytechnique - Palaiseau Ecole Polytechnique - Palaiseau" value="https://idp.polytechnique.fr/idp/shibboleth">Ecole Polytechnique - Palaiseau</option>
+		<option title="groupe-esa.com Ecole Supérieure d'Agriculture d'Angers" value="https://ident.groupe-esa.com/idp/shibboleth">Ecole Supérieure d'Agriculture d'Angers</option>
+		<option title="mines-ales.fr Ecole des Mines d'Ales" value="https://shibboleth.mines-ales.fr/idp/shibboleth">Ecole des Mines d'Ales</option>
+		<option title="gemtech.fr Ecole des Mines de Nantes" value="https://nte.gemtech.fr/idp/shibboleth">Ecole des Mines de Nantes</option>
+		<option title="emse.fr Ecole des Mines de Saint-Etienne" value="https://shibbo.emse.fr/idp/shibboleth">Ecole des Mines de Saint-Etienne</option>
+		<option title="ent-etrs.net Ecole des Transmissions - Cesson Sévigné" value="https://cas.ent-etrs.net/idp/shibboleth">Ecole des Transmissions - Cesson Sévigné</option>
+		<option title="mines-albi.fr Mines-Albi Ecole des mines d'Albi-Carmaux" value="https://shib.mines-albi.fr/idp/shibboleth">Ecole des mines d'Albi-Carmaux</option>
+		<option title="ens.fr Ecole normale supérieure" value="https://idp.ens.fr/idp/idp">Ecole normale supérieure</option>
+		<option title="gouv.fr Ecoles de Saint- Cyr Coëtquidan" value="https://cas.st-cyr.terre.defense.gouv.fr/idp/shibboleth">Ecoles de Saint- Cyr Coëtquidan</option>
+		<option title="educagri.fr Educagri - Enseignement Agricole" value="https://cas.educagri.fr/idp/shibboleth">Educagri - Enseignement Agricole</option>
+		<option title="athensams.net Eduserv Beta" value="http://oasp.beta.athensams.net/OaspMetadata">Eduserv Beta</option>
+		<option title="renater.fr GIP RENATER" value="https://idp.renater.fr/idp/shibboleth">GIP RENATER</option>
+		<option title="renater.fr RENATER - 2FA GIP RENATER - Authentification forte" value="https://strong.renater.fr/idp/shibboleth">GIP RENATER - Authentification forte</option>
+		<option title="grenoble-inp.fr Grenoble INP - Institut polytechnique de Grenoble" value="https://shibboleth.grenoble-inp.fr/idp/shibboleth">Grenoble INP - Institut polytechnique de Grenoble</option>
+		<option title="eseo.fr Groupe ESEO" value="https://shibb-prod.eseo.fr/idp/shibboleth">Groupe ESEO</option>
+		<option title="hec.fr HEC Paris HEC Paris" value="https://idp.hec.fr/idp/shibboleth">HEC Paris</option>
+		<option title="ifma.fr IFMA Clermont-Ferrand - Institut Francais de Mecanique Avancee" value="https://idpshib01.ifma.fr/idp/shibboleth">IFMA Clermont-Ferrand - Institut Francais de Mecanique Avancee</option>
+		<option title="ifremer.fr IFREMER" value="https://idp.ifremer.fr/idp/shibboleth">IFREMER</option>
+		<option title="ifsttar.fr IFSTTAR" value="https://sesame.ifsttar.fr/idp/shibboleth">IFSTTAR</option>
+		<option title="inalco.fr INALCO - Institut National des Langues et Civilisations Orientales" value="https://idp.inalco.fr/idp">INALCO - Institut National des Langues et Civilisations Orientales</option>
+		<option title="ined.fr INED - Institut National d'Etudes Démographiques" value="https://federation.ined.fr/idp/shibboleth">INED - Institut National d'Etudes Démographiques</option>
+		<option title="inha.fr INHA - Institut National de l'Histoire de l'Art" value="https://idp.inha.fr/idp/shibboleth">INHA - Institut National de l'Histoire de l'Art</option>
+		<option title="inp-toulouse.fr INPT - Institut National Polytechnique de Toulouse" value="https://idp.inp-toulouse.fr/idp/shibboleth">INPT - Institut National Polytechnique de Toulouse</option>
+		<option title="inra.fr INRA - Institut National de la Recherche Agronomique" value="https://idp.inra.fr/idp/shibboleth">INRA - Institut National de la Recherche Agronomique</option>
+		<option title="inria.fr INRIA - Institut National de Recherche en Informatique et Automatique" value="https://idp1.inria.fr/idp/shibboleth">INRIA - Institut National de Recherche en Informatique et Automatique</option>
+		<option title="insa-cvl.fr INSA CENTRE VAL DE LOIRE INSA Centre Val de Loire" value="https://shibboleth.insa-cvl.fr/idp/shibboleth">INSA Centre Val de Loire</option>
+		<option title="insa-lyon.fr INSA de Lyon INSA de Lyon" value="https://login.insa-lyon.fr/idp/shibboleth">INSA de Lyon</option>
+		<option title="insa-rennes.fr INSA de Rennes" value="https://idp.insa-rennes.fr/idp/shibboleth">INSA de Rennes</option>
+		<option title="insa-rouen.fr INSA de Rouen" value="https://shibboleth.insa-rouen.fr/idp/shibboleth">INSA de Rouen</option>
+		<option title="insa-strasbourg.fr INSA de Strasbourg" value="https://antimoine.insa-strasbourg.fr/idp/shibboleth">INSA de Strasbourg</option>
+		<option title="insa-toulouse.fr INSA de Toulouse INSA de Toulouse" value="https://srv-fii.insa-toulouse.fr/idp/shibboleth">INSA de Toulouse</option>
+		<option title="inserm.fr INSERM" value="https://idp.inserm.fr/idp/shibboleth">INSERM</option>
+		<option title="ipb.fr IPB - Bordeaux INP" value="https://idp.ipb.fr/idp/shibboleth">IPB - Bordeaux INP</option>
+		<option title="ird.fr IRD - Institut de Recherche pour le Développement" value="https://sso.ird.fr/idp/shibboleth">IRD - Institut de Recherche pour le Développement</option>
+		<option title="irstea.fr IRSTEA - Institut national de recherche en sciences et technologies pour l'environnement et l'agriculture" value="https://idp.irstea.fr/idp/shibboleth">IRSTEA - Institut national de recherche en sciences et technologies pour l'environnement et l'agriculture</option>
+		<option title="isae.fr ISAE ISAE Institut Supérieur de l'Aéronautique et de l'Espace" value="https://eliot.isae.fr/idp/shibboleth">ISAE Institut Supérieur de l'Aéronautique et de l'Espace</option>
+		<option title="iufm.fr IUFM de Montpellier" value="urn:mace:cru.fr:federation:montpellier.iufm.fr">IUFM de Montpellier</option>
+		<option title="images-et-reseaux.com Images et Réseaux - Pôle de compétitivité Images et Réseaux - Pôle de compétitivité" value="https://ir-lan-fid.images-et-reseaux.com/idp/shibboleth">Images et Réseaux - Pôle de compétitivité</option>
+		<option title="institutoptique.fr Institut Optique Graduate School Institut Optique Graduate School" value="https://sso.institutoptique.fr/idp/shibboleth">Institut Optique Graduate School</option>
+		<option title="liu.se Linköpings universitet (ADFS) Linköping University (ADFS)" value="http://fs.liu.se/adfs/services/trust">Linköping University (ADFS)</option>
+		<option title="mines-paristech.fr MINES ParisTech" value="https://auth.mines-paristech.fr/idp/shibboleth">MINES ParisTech</option>
+		<option title="education.fr FRENCH DEPARTMENT OF EDUCATION - HUB HN02 MINISTERE DE L'EDUCATION NATIONALE - HUB HN02" value="https://fim-hn-02-idp.orion.education.fr">MINISTERE DE L'EDUCATION NATIONALE - HUB HN02</option>
+		<option title="mines-douai.fr Mines Douai" value="https://cerbere2.mines-douai.fr/idp/shibboleth">Mines Douai</option>
+		<option title="mnhn.fr Muséum National d'Histoire Naturelle (MNHN) Muséum National d'Histoire Naturelle (MNHN)" value="https://fid.mnhn.fr/idp/shibboleth">Muséum National d'Histoire Naturelle (MNHN)</option>
+		<option title="normandie-univ.fr Normandie Université" value="https://idp.normandie-univ.fr/idp/shibboleth">Normandie Université</option>
+		<option title="obspm.fr Observatoire de Paris" value="https://shibboleth.obspm.fr/idp/shibboleth">Observatoire de Paris</option>
+		<option title="oca.eu Observatoire de la Côte d'Azur" value="https://shibidp.oca.eu/idp/shibboleth">Observatoire de la Côte d'Azur</option>
+		<option title="hesam.eu PRES HESAM - Hautes Etudes-Sorbonne-Arts et Métiers" value="https://idp.hesam.eu/idp/shibboleth">PRES HESAM - Hautes Etudes-Sorbonne-Arts et Métiers</option>
+		<option title="paris-sorbonne.fr Paris-Sorbonne Universite" value="https://vm-idp.paris-sorbonne.fr/idp/shibboleth">Paris-Sorbonne Universite</option>
+		<option title="ac-limoges.fr Rectorat Limoges shib Rectorat Limoges shib" value="https://shibboleth.ac-limoges.fr/idp/shibboleth">Rectorat Limoges shib</option>
+		<option title="ac-martinique.fr Rectorat de la Martinique" value="https://cas.ac-martinique.fr/idp/shibboleth">Rectorat de la Martinique</option>
+		<option title="sciencespobordeaux.fr Sciences Po Bordeaux" value="https://idp.sciencespobordeaux.fr/idp/shibboleth">Sciences Po Bordeaux</option>
+		<option title="sciencespo-grenoble.fr Sciences Po Grenoble" value="https://shibboleth.sciencespo-grenoble.fr/idp/shibboleth">Sciences Po Grenoble</option>
+		<option title="sciences-po.fr Sciences Po Paris" value="https://federation.sciences-po.fr/idp/shibboleth">Sciences Po Paris</option>
+		<option title="sciencespo-rennes.fr Sciences Po Rennes Sciences Po Rennes" value="https://ident-shib.sciencespo-rennes.fr/idp/shibboleth">Sciences Po Rennes</option>
+		<option title="telecom-lille1.eu Telecom Lille1" value="https://idp.telecom-lille1.eu/idp/shibboleth">Telecom Lille1</option>
+		<option title="tem-tsp.eu Telecom School of Management and Telecom SudParis Telecom SudParis et Telecom Management" value="https://idpr.tem-tsp.eu/idp/shibboleth">Telecom SudParis et Telecom Management</option>
+		<option title="telecom-bretagne.eu Télécom Bretagne" value="https://idp.telecom-bretagne.eu/idp/shibboleth">Télécom Bretagne</option>
+		<option title="telecom-lille.fr Telecom Lille Télécom Lille" value="https://idptl.telecom-lille.fr/idp/shibboleth">Télécom Lille</option>
+		<option title="telecom-paristech.fr Télécom ParisTech" value="https://idp.telecom-paristech.fr/idp/shibboleth">Télécom ParisTech</option>
+		<option title="utc.fr UTC - Université de Technologie de Compiègne" value="urn:mace:cru.fr:federation:utc.fr">UTC - Université de Technologie de Compiègne</option>
+		<option title="u-grenoble3.fr Université  Stendhal - Grenoble 3" value="https://shibboleth.u-grenoble3.fr/idp/shibboleth">Université  Stendhal - Grenoble 3</option>
+		<option title="u-bordeaux-montaigne.fr Université Bordeaux Montaigne" value="https://idp.u-bordeaux-montaigne.fr/idp/shibboleth">Université Bordeaux Montaigne</option>
+		<option title="ucly.fr Université Catholique de Lyon" value="https://id.ucly.fr/idp/shibboleth">Université Catholique de Lyon</option>
+		<option title="uco.fr Université Catholique de l'Ouest - Angers" value="https://www.uco.fr/idp/shibboleth">Université Catholique de l'Ouest - Angers</option>
+		<option title="univ-lille3.fr Université Lille 3" value="https://idp.univ-lille3.fr/idp">Université Lille 3</option>
+		<option title="univ-paris-est.fr Université Paris - Est" value="https://shibboleth.univ-paris-est.fr/idp/shibboleth">Université Paris - Est</option>
+		<option title="univ-paris1.fr Université Paris 1 Panthéon-Sorbonne" value="urn:mace:cru.fr:federation:univ-paris1.fr">Université Paris 1 Panthéon-Sorbonne</option>
+		<option title="univ-paris13.fr University Paris 13 Université Paris 13" value="https://federation-identite.univ-paris13.fr/idp/shibboleth">Université Paris 13</option>
+		<option title="u-paris10.fr Université Paris Ouest Nanterre La Défense" value="https://shib.u-paris10.fr/idp/shibboleth">Université Paris Ouest Nanterre La Défense</option>
+		<option title="u-pem.fr Paris-Est Marne-la-Vallée University Université Paris-Est Marne-la-Vallée" value="https://federation.u-pem.fr/idp/shibboleth">Université Paris-Est Marne-la-Vallée</option>
+		<option title="u-psud.fr Paris-Sud University Université Paris-Sud" value="https://idp.u-psud.fr/idp">Université Paris-Sud</option>
+		<option title="univ-tlse2.fr Université Toulouse 2 - Mirail" value="https://tonga.univ-tlse2.fr/idp/shibboleth">Université Toulouse 2 - Mirail</option>
+		<option title="univ-amu.fr Université d'Aix-Marseille" value="https://idp.univ-amu.fr/idp/shibboleth">Université d'Aix-Marseille</option>
+		<option title="univ-angers.fr University of Angers Université d'Angers" value="urn:mace:cru.fr:federation:univ-angers.fr">Université d'Angers</option>
+		<option title="univ-artois.fr Université d'Artois" value="https://idp.univ-artois.fr/idp/shibboleth">Université d'Artois</option>
+		<option title="univ-avignon.fr Université d'Avignon et des Pays de Vaucluse" value="https://idp.univ-avignon.fr/idp/shibboleth">Université d'Avignon et des Pays de Vaucluse</option>
+		<option title="univ-evry.fr Université d'Evry Val d'Essonne" value="https://shibboleth.univ-evry.fr/idp/shibboleth">Université d'Evry Val d'Essonne</option>
+		<option title="univ-orleans.fr Université d'Orléans" value="https://idp.univ-orleans.fr/idp/shibboleth">Université d'Orléans</option>
+		<option title="u-bordeaux.fr Université de Bordeaux" value="https://idp.u-bordeaux.fr/idp_ubx/shibboleth">Université de Bordeaux</option>
+		<option title="u-bordeaux1.fr Université de Bordeaux 1" value="https://idp.u-bordeaux1.fr/idp/shibboleth">Université de Bordeaux 1</option>
+		<option title="u-bordeaux2.fr Université de Bordeaux 2 - Victor Segalen" value="https://idp.u-bordeaux2.fr/idp/shibboleth">Université de Bordeaux 2 - Victor Segalen</option>
+		<option title="u-bordeaux4.fr Université de Bordeaux IV - Montesquieu" value="https://idp.u-bordeaux4.fr/idp/shibboleth">Université de Bordeaux IV - Montesquieu</option>
+		<option title="u-bourgogne.fr Université de Bourgogne" value="https://shibboleth.u-bourgogne.fr/idp/shibboleth">Université de Bourgogne</option>
+		<option title="univ-brest.fr Université de Bretagne Occidentale" value="https://federation2.univ-brest.fr/idp/shibboleth">Université de Bretagne Occidentale</option>
+		<option title="univ-ubs.fr Université de Bretagne Sud" value="urn:mace:cru.fr:federation:univ-ubs.fr">Université de Bretagne Sud</option>
+		<option title="unicaen.fr Université de Caen - Basse Normandie" value="https://idp.unicaen.fr/idp/shibboleth">Université de Caen - Basse Normandie</option>
+		<option title="u-cergy.fr Université de Cergy Pontoise" value="https://idp.u-cergy.fr/idp/shibboleth">Université de Cergy Pontoise</option>
+		<option title="u-clermont1.fr Université de Clermont Ferrand 1 - Auvergne" value="https://idp.u-clermont1.fr/idp/shibboleth">Université de Clermont Ferrand 1 - Auvergne</option>
+		<option title="univ-bpclermont.fr Université de Clermont-Ferrand 2 - Blaise Pascal" value="https://idp.univ-bpclermont.fr/idp/shibboleth">Université de Clermont-Ferrand 2 - Blaise Pascal</option>
+		<option title="univ-corse.fr Université de Corse" value="https://shibboleth.univ-corse.fr/idp/shibboleth">Université de Corse</option>
+		<option title="univ-fcomte.fr Université de Franche-Comté" value="https://idp.univ-fcomte.fr/idp/shibboleth">Université de Franche-Comté</option>
+		<option title="ujf-grenoble.fr Université de Grenoble 1 - Joseph Fourier" value="https://shibboleth.ujf-grenoble.fr/idp/shibboleth">Université de Grenoble 1 - Joseph Fourier</option>
+		<option title="upmf-grenoble.fr Grenoble 2 University - UPMF Université de Grenoble 2 UPMF" value="https://shibboleth.upmf-grenoble.fr/idp/shibboleth">Université de Grenoble 2 UPMF</option>
+		<option title="uha.fr Université de Haute Alsace" value="https://idp.uha.fr/idp/shibboleth">Université de Haute Alsace</option>
+		<option title="univ-lr.fr Université de La Rochelle" value="https://apps.univ-lr.fr/idp/shibboleth">Université de La Rochelle</option>
+		<option title="univ-lille1.fr Université de Lille - Sciences et Technologies Université de Lille - Sciences et Technologies" value="urn:mace:cru.fr:federation:univ-lille1.fr">Université de Lille - Sciences et Technologies</option>
+		<option title="univ-lille2.fr Université de Lille 2 Droit et Santé" value="urn:mace:cru.fr:federation:univ-lille2.fr">Université de Lille 2 Droit et Santé</option>
+		<option title="unilim.fr Université de Limoges" value="urn:mace:cru.fr:federation:unilim.fr">Université de Limoges</option>
+		<option title="univ-lorraine.fr Université de Lorraine" value="https://idp.univ-lorraine.fr/idp/shibboleth">Université de Lorraine</option>
+		<option title="universite-lyon.fr Université de Lyon" value="https://idp.universite-lyon.fr/idp/shibboleth">Université de Lyon</option>
+		<option title="univ-lyon1.fr Université de Lyon 1 - Claude Bernard" value="urn:mace:cru.fr:federation:univ-lyon1.fr">Université de Lyon 1 - Claude Bernard</option>
+		<option title="univ-lyon2.fr Université de Lyon 2 - Lumière" value="https://idp.univ-lyon2.fr/idp/shibboleth">Université de Lyon 2 - Lumière</option>
+		<option title="univ-lyon3.fr Université de Lyon 3 - Jean Moulin" value="https://idp.univ-lyon3.fr/idp/shibboleth">Université de Lyon 3 - Jean Moulin</option>
+		<option title="univ-montp1.fr Université de Montpellier 1" value="urn:mace:cru.fr:federation:univ-montp1.fr">Université de Montpellier 1</option>
+		<option title="univ-montp2.fr Université de Montpellier 2" value="https://federationrenater.univ-montp2.fr/idp/shibboleth">Université de Montpellier 2</option>
+		<option title="univ-montp3.fr Université de Montpellier 3" value="urn:mace:cru.fr:federation:univ-montp3.fr">Université de Montpellier 3</option>
+		<option title="univ-nantes.fr University of Nantes (FRANCE) Université de Nantes" value="urn:mace:cru.fr:federation:univ-nantes.fr">Université de Nantes</option>
+		<option title="unice.fr Université de Nice-Sophia Antipolis - UNICE" value="urn:mace:cru.fr:federation:unice.fr">Université de Nice-Sophia Antipolis - UNICE</option>
+		<option title="unimes.fr Université de Nimes Université de Nimes" value="https://federation.unimes.fr/idp/shibboleth">Université de Nimes</option>
+		<option title="u-paris2.fr Université de Paris 2 - Panthéon Assas" value="https://idp.u-paris2.fr/idp/shibboleth">Université de Paris 2 - Panthéon Assas</option>
+		<option title="univ-paris3.fr University Paris 3 - Sorbonne Nouvelle Université de Paris 3 - Sorbonne Nouvelle" value="https://idp.univ-paris3.fr/idp/shibboleth">Université de Paris 3 - Sorbonne Nouvelle</option>
+		<option title="parisdescartes.fr Université de Paris 5 - Paris Descartes" value="https://idp.parisdescartes.fr/idp/shibboleth">Université de Paris 5 - Paris Descartes</option>
+		<option title="upmc.fr Université de Paris 6 - Pierre et Marie Curie" value="https://idp.upmc.fr/idp/shibboleth">Université de Paris 6 - Pierre et Marie Curie</option>
+		<option title="univ-paris-diderot.fr Université de Paris 7 - Denis Diderot" value="https://auth.univ-paris-diderot.fr/idp/shibboleth">Université de Paris 7 - Denis Diderot</option>
+		<option title="univ-paris8.fr Université de Paris 8 - Vincennes" value="https://idp.univ-paris8.fr/idp/shibboleth">Université de Paris 8 - Vincennes</option>
+		<option title="dauphine.fr Université de Paris 9 - Dauphine" value="https://idp.ent.dauphine.fr/idp/shibboleth">Université de Paris 9 - Dauphine</option>
+		<option title="u-pec.fr Université de Paris Est Créteil - UPEC" value="https://auth.u-pec.fr/idp/shibboleth">Université de Paris Est Créteil - UPEC</option>
+		<option title="univ-paris4.fr Université de Paris IV - Sorbonne" value="https://idp.univ-paris4.fr/idp/shibboleth">Université de Paris IV - Sorbonne</option>
+		<option title="univ-pau.fr Université de Pau et des Pays de l'Adour" value="https://auth.univ-pau.fr/idp/shibboleth">Université de Pau et des Pays de l'Adour</option>
+		<option title="univ-perp.fr Université de Perpignan Via Domitia" value="https://federation2.univ-perp.fr/idp/shibboleth">Université de Perpignan Via Domitia</option>
+		<option title="u-picardie.fr Université de Picardie Jules Verne" value="https://idp.u-picardie.fr/shibboleth">Université de Picardie Jules Verne</option>
+		<option title="univ-poitiers.fr Université de Poitiers" value="urn:mace:cru.fr:federation:univ-poitiers.fr">Université de Poitiers</option>
+		<option title="upf.pf University of French Polynesia Université de Polynésie française" value="https://federation.upf.pf/idp/shibboleth">Université de Polynésie française</option>
+		<option title="univ-psl.fr PSL Research University Université de Recherche Paris Sciences & Lettres" value="https://idp.univ-psl.fr/idp/saml2/metadata">Université de Recherche Paris Sciences & Lettres</option>
+		<option title="univ-reims.fr Université de Reims Champagne-Ardenne" value="urn:mace:cru.fr:federation:univ-reims.fr">Université de Reims Champagne-Ardenne</option>
+		<option title="univ-rennes1.fr University of Rennes 1 Université de Rennes 1" value="urn:mace:cru.fr:federation:univ-rennes1.fr">Université de Rennes 1</option>
+		<option title="uhb.fr Université de Rennes 2 - Haute Bretagne" value="urn:mace:cru.fr:federation:uhb.fr">Université de Rennes 2 - Haute Bretagne</option>
+		<option title="univ-rouen.fr Université de Rouen" value="urn:mace:cru.fr:federation:univ-rouen.fr">Université de Rouen</option>
+		<option title="univ-st-etienne.fr Université de Saint-Etienne - Jean Monnet" value="urn:mace:cru.fr:federation:univ-st-etienne.fr">Université de Saint-Etienne - Jean Monnet</option>
+		<option title="univ-savoie.fr Université de Savoie" value="https://shibboleth.univ-savoie.fr/idp/shibboleth">Université de Savoie</option>
+		<option title="unistra.fr Université de Strasbourg" value="https://idp.unistra.fr/idp/shibboleth">Université de Strasbourg</option>
+		<option title="utbm.fr Université de Technologie de Belfort-Montbéliard" value="https://federation.utbm.fr/idp/shibboleth">Université de Technologie de Belfort-Montbéliard</option>
+		<option title="utt.fr Université de Technologie de Troyes" value="urn:mace:cru.fr:federation:utt.fr">Université de Technologie de Troyes</option>
+		<option title="univ-toulouse.fr Université de Toulouse" value="https://shibboleth.univ-toulouse.fr/idp/shibboleth">Université de Toulouse</option>
+		<option title="ut-capitole.fr Université de Toulouse 1 Capitole" value="https://idp.ut-capitole.fr/idp/shibboleth">Université de Toulouse 1 Capitole</option>
+		<option title="ups-tlse.fr Université de Toulouse 3 - Paul Sabatier" value="https://shibboleth.ups-tlse.fr/idp/shibboleth">Université de Toulouse 3 - Paul Sabatier</option>
+		<option title="univ-tours.fr Université de Tours" value="https://idp.univ-tours.fr/idp/shibboleth">Université de Tours</option>
+		<option title="univ-valenciennes.fr Université de Valenciennes" value="urn:mace:cru.fr:federation:univ-valenciennes.fr">Université de Valenciennes</option>
+		<option title="uvsq.fr Université de Versailles - Saint Quentin en Yvelines" value="https://shibboleth.uvsq.fr/idp/shibboleth">Université de Versailles - Saint Quentin en Yvelines</option>
+		<option title="univ-reunion.fr Université de la Réunion" value="urn:mace:cru.fr:federation:univ-reunion.fr">Université de la Réunion</option>
+		<option title="univ-ag.fr Université des Antilles et de la Guyane" value="https://idp.univ-ag.fr/idp/shibboleth">Université des Antilles et de la Guyane</option>
+		<option title="univ-lehavre.fr Université du Havre" value="https://idp.univ-lehavre.fr/idp/shibboleth">Université du Havre</option>
+		<option title="univ-littoral.fr Université du Littoral Côte d'Opale" value="urn:mace:cru.fr:federation:univ-littoral.fr">Université du Littoral Côte d'Opale</option>
+		<option title="univ-lemans.fr Université du Maine - Le Mans" value="urn:mace:cru.fr:federation:univ-lemans.fr">Université du Maine - Le Mans</option>
+		<option title="univ-tln.fr Université du Sud Toulon Var" value="urn:mace:cru.fr:federation:univ-tln.fr">Université du Sud Toulon Var</option>
+		<option title="vetagro-sup.fr Vetagro Sup" value="https://ambre.vetagro-sup.fr/idp/shibboleth">Vetagro Sup</option>
+		<option title="enpc.fr École des Ponts ParisTech École des Ponts ParisTech" value="https://rigal.enpc.fr/idp/shibboleth">École des Ponts ParisTech</option>            </select>
+            <img src="sites/all/themes/vtrois/images/web/shibboleth_logo.png" />
+            <br />
+            <input type="submit" name="Select" accesskey="s" value="OK"> 
+        </div>
+    </form>
+</div>
+
+<div class="ombre ddbutton ddgroup-userlogin" id="btn_iel">
+    <div class="puce ddbutton-puce"></div>
+    <h2 class="ddbutton-action">Pas de compte universitaire ?</h2>
+    <div class="ddbutton-target" style="display: none;">
+    
+       <div id="diel-user" ng-app="loginApp" ng-controller="loginCtrl">
+            <form action="" method="" id="user-login-form"  accept-charset="UTF-8" >
+     
+                <!--input type="hidden" id="destination" name="destination" value="http://www.iutenligne.net/?q=shib_login/node" /-->
+                <input type="hidden" id="ID" name="ID" value="0" />
+                <div class="float-iel">
+                    <label for="edit-name">Votre identifiant ESTenligne :</label>
+                    <input type="email" id="Email" name="Email" value="" size="15" maxlength="60" class="form-text required" required="required"/>
+                </div>
+                <div class="float-iel">
+                    <label for="edit-pass">Votre mot de passe :</label>
+                    <input type="password" id="PassWd" name="PassWd"  size="15" maxlength="128" class="form-text required" required="required"/>
+                </div>
+                <br />
+                
+                <div class="error" id="errorDiv" style="display: none;">
+                        Votre identifiant ou mot de passe est incorrect.
+                        <br />
+                        Cliquez sur <a href="profileForgot.html">modifier votre mot de passe</a> pour accéder à nouveau à votre compte. 
+                        <br />
+                        <br />
+                    </div>
+                    
+                <input type="submit" id="edit-submit" name="op" value="Se connecter" class="form-submit" ng-click="verifier()" />
+                <!--  
+                                <input type="submit" id="edit-submit" name="op" value="Se connecter" class="form-submit">
+                -->
+            </form>
+        </div>
+        
+        <div id="diel-register">
+            <h2>Je suis nouveau, je cr&eacute;e un compte ESTenligne</h2>
+            <form action="/profile/inscription" method="post" accept-charset="UTF-8">
+                <input type="hidden" id="destination" name="destination" value="http://www.iutenligne.net/?q=shib_login/node" />
+                <input type="submit" name="op" value="Cr&eacute;er votre profil" class="form-submit">
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="none">
+</div>
+
+<style>
+    .error{
+        font-size: 0.8em;
+        color: red;
+    }
+    .error a {
+        color: #5b8ac2;
+    }
+</style>
+
+
+
+
+<script type="text/JavaScript">
+
+		function show_error_div(state){
+		var lediv = document.getElementById("errorDiv");
+		if(state=="yes")
+		lediv.style.display="block";
+		else
+		lediv.style.display="none";
+		}
+</script>
+
+<script>
+    (function($) {
+        
+        $(document).ready(function(){
+            
+                                  $("#btn_shib .ddbutton-action").click();
+                         
+        });
+        
+    })(jQuery)
+    
+    function showshib() {
+        jQuery("#btn_shib .ddbutton-action").click();
+        jQuery("#btn_shib select").click();
+    }
+</script>
+            </div>
+            <div id="container-bottom">
+            </div>
+        </div>
+    </body>
+    <script type="text/javascript">
+var app = angular.module('loginApp', []);
+	 app.controller('loginCtrl', function($scope, $http) {
+	    $http.get("http://localhost/Gst-Ressources/AfficherComptes.php")
+	    .success(function (response) {
+	 			   $scope.comptes = response.Comptes;
+	 			       console.log($scope.comptes);
+	 			   $scope.verifier=function(){
+		 			  
+	 		              var c=$scope.comptes;
+	 		              var t=0;
+		 		        for (x in c) { 
+		 		        	if (   c[x].Login==document.getElementById("Email").value
+				 		        && c[x].Passwd==document.getElementById("PassWd").value) {
+		 		            	t=1;
+		 		            	document.getElementById("ID").value=""+c[x].Id;
+		 		            	document.getElementById("user-login-form").setAttribute("action", "index.html");
+		 		            	document.getElementById("user-login-form").setAttribute("method", "get");
+								
+		 		            	
+		 		    	     }
+	 			         }
+	 			         if(t==0)  show_error_div('yes'); 
+	 			   }
+	    });
+	 });
+ 
+</script>
+</html>
